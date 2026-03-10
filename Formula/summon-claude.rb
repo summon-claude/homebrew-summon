@@ -117,8 +117,8 @@ class SummonClaude < Formula
   end
 
   resource "markdown-to-mrkdwn" do
-    url "https://files.pythonhosted.org/packages/17/8e/f2c62a88097425b0dba3a8699d13154b4c5888b989ffaf6419c10058b338/markdown_to_mrkdwn-0.3.1.tar.gz"
-    sha256 "25f5c095516f8ad956c88c5dab75493aadfaa02e51e3c84459490058a8ca840b"
+    url "https://files.pythonhosted.org/packages/52/92/ce0a08fb9769a13be550a7079c3409300ca6eb14ccc9038f67ac44deeef4/markdown_to_mrkdwn-0.3.1-py3-none-any.whl"
+    sha256 "5a6d08f1eaa08aea66953ef0eba206e0bb244d5c62880c76d1e3a11ee46cd3f0"
   end
 
   resource "mcp" do
