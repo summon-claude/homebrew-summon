@@ -3,15 +3,9 @@ class SummonClaude < Formula
 
   desc "Bridge Claude Code sessions to Slack channels"
   homepage "https://github.com/wgordon17/summon-claude"
-  url "https://files.pythonhosted.org/packages/9e/56/afd87445b49f173fc73ce7dcbd5834f29dd6d2caed5d5aea4b55d0ee0043/summon_claude-0.2.0.tar.gz"
-  sha256 "0ad6936a4cc485f404802312a6a369e07c8cfef74c209cfafea4bcc40ad0cd26"
+  url "https://files.pythonhosted.org/packages/0f/31/aa4211447fd66aabfc9c2deeeedb6ae2cb64c0c28b34a57ce76073d24c30/summon_claude-0.2.1.tar.gz"
+  sha256 "86303a371a94603066b0daff6d437c1f825a9a2ed0835ca85a723d3f20bbc1ec"
   license "MIT"
-
-  bottle do
-    root_url "https://github.com/wgordon17/homebrew-summon/releases/download/v0.2.0"
-    sha256 cellar: :any, arm64_sonoma: "b79f878badaf29aaef4f27009dd1c44b98e5305f64b2594809d4eba4fab70b51"
-    sha256 cellar: :any, arm64_sequoia: "a12f4b50de3e9c3e2cab7f0f1d3ee1c38ea09ba750cf90ef905a8063de052061"
-  end
 
   depends_on "rust" => :build
   depends_on "openssl@3"
@@ -123,8 +117,8 @@ class SummonClaude < Formula
   end
 
   resource "markdown-to-mrkdwn" do
-    url "https://files.pythonhosted.org/packages/52/92/ce0a08fb9769a13be550a7079c3409300ca6eb14ccc9038f67ac44deeef4/markdown_to_mrkdwn-0.3.1-py3-none-any.whl"
-    sha256 "5a6d08f1eaa08aea66953ef0eba206e0bb244d5c62880c76d1e3a11ee46cd3f0"
+    url "https://files.pythonhosted.org/packages/99/04/31a8d2a1662cdf61f3fcfa6e219bc52f176cb00dfc30e21cef5f869ec905/markdown_to_mrkdwn-0.3.2-py3-none-any.whl"
+    sha256 "50c523594a70ef2891c3871074059539f596041d6eab767335e60ddcdc91e94f"
   end
 
   resource "mcp" do
