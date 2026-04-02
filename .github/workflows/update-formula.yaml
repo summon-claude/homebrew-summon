@@ -60,7 +60,8 @@ jobs:
           brew update-python-resources \
             --extra-packages=workspace-mcp,playwright \
             --ignore-errors \
-            summon-claude
+            summon-claude \
+            || echo "::warning::brew update-python-resources exited non-zero (expected for platform-only packages like playwright)"
 
       - name: Fix broken sdists and platform-only packages
         run: |

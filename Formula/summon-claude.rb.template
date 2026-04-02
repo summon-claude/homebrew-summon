@@ -2,7 +2,7 @@ class SummonClaude < Formula
   include Language::Python::Virtualenv
 
   desc "Bridge Claude Code sessions to Slack channels"
-  homepage "https://github.com/wgordon17/summon-claude"
+  homepage "https://github.com/summon-claude/summon-claude"
   url "__URL__"
   sha256 "__SHA256__"
   license "MIT"
