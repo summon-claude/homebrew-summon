@@ -546,7 +546,21 @@ class SummonClaude < Formula
   end
 
   def install
-    virtualenv_install_with_resources
+    venv = virtualenv_create(libexec, "python3.13")
+
+    # Wheel resources (.whl) must be installed from cached download files
+    # directly. Homebrew's resource staging extracts them as zips, producing
+    # a directory with no setup.py/pyproject.toml that pip cannot install.
+    wheels, sdists = resources.partition { |r| r.url.end_with?(".whl") }
+    venv.pip_install sdists
+
+    wheels.each do |r|
+      system libexec/"bin/pip", "install", "--verbose", "--no-deps",
+             "--ignore-installed", "--no-compile",
+             r.cached_download
+    end
+
+    venv.pip_install_and_link buildpath
   end
 
   test do
