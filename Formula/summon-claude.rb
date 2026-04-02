@@ -2,13 +2,13 @@ class SummonClaude < Formula
   include Language::Python::Virtualenv
 
   desc "Bridge Claude Code sessions to Slack channels"
-  homepage "https://github.com/wgordon17/summon-claude"
+  homepage "https://github.com/summon-claude/summon-claude"
   url "https://files.pythonhosted.org/packages/0f/31/aa4211447fd66aabfc9c2deeeedb6ae2cb64c0c28b34a57ce76073d24c30/summon_claude-0.2.1.tar.gz"
   sha256 "86303a371a94603066b0daff6d437c1f825a9a2ed0835ca85a723d3f20bbc1ec"
   license "MIT"
 
   bottle do
-    root_url "https://github.com/wgordon17/homebrew-summon/releases/download/v0.2.1"
+    root_url "https://github.com/summon-claude/homebrew-summon/releases/download/v0.2.1"
     sha256 cellar: :any, arm64_sonoma: "5af4437fa4be71532eb07221728d8309eb5415ebdd9b130739b253dcc82287a6"
     sha256 cellar: :any, arm64_sequoia: "10655f0a4faff51a5eb670336ebd06c14a255bbb64b898a99c7e2efcb7e5536f"
   end
