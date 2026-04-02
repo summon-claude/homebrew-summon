@@ -21,9 +21,13 @@ class SummonClaude < Formula
     venv.pip_install sdists
 
     wheels.each do |r|
-      system libexec/"bin/pip", "install", "--verbose", "--no-deps",
+      clean = buildpath/File.basename(r.url)
+      FileUtils.ln_s r.cached_download, clean
+      system "python3.13", "-m", "pip",
+             "--python=#{libexec}/bin/python",
+             "install", "--verbose", "--no-deps",
              "--ignore-installed", "--no-compile",
-             r.cached_download
+             clean
     end
 
     venv.pip_install_and_link buildpath
