@@ -301,8 +301,8 @@ class SummonClaude < Formula
   end
 
   resource "more-itertools" do
-    url "https://files.pythonhosted.org/packages/c3/41/181494479e399292ac5b4c6ee9e4688642d4591a50a317e8180c2335ad2a/more_itertools-11.0.0.tar.gz"
-    sha256 "1fca6853f57fbfabc36ad31b3c3d72490340a414f1cc0eec78436fb847837304"
+    url "https://files.pythonhosted.org/packages/24/24/e0acc4bf54cba50c1d432c70a72a3df96db4a321b2c4c68432a60759044f/more_itertools-11.0.1.tar.gz"
+    sha256 "fefaf25b7ab08f0b45fa9f1892cae93b9fc0089ef034d39213bce15f1cc9e199"
   end
 
   resource "multidict" do
@@ -435,6 +435,11 @@ class SummonClaude < Formula
     sha256 "7340bef99a7e0032613f56dc36027b959fd3b30a787ed62d310e951f7c3a3a58"
   end
 
+  resource "pytz" do
+    url "https://files.pythonhosted.org/packages/56/db/b8721d71d945e6a8ac63c0fc900b2067181dbb50805958d4d4661cf7d277/pytz-2026.1.post1.tar.gz"
+    sha256 "3378dde6a0c3d26719182142c56e60c7f9af7e968076f31aae569d72a0358ee1"
+  end
+
   resource "pyyaml" do
     url "https://files.pythonhosted.org/packages/05/8e/961c0007c59b8dd7729d542c61a4d537767a59645b82a0b521206e1e25c2/pyyaml-6.0.3.tar.gz"
     sha256 "d76623373421df22fb4cf8817020cbb7ef15c725b9d5e45f17e189bfc384190f"
@@ -531,8 +536,8 @@ class SummonClaude < Formula
   end
 
   resource "workspace-mcp" do
-    url "https://files.pythonhosted.org/packages/81/9a/a3ec4a50f8d9ddd90937bc92cf694011f3062614edefab439b408d880cd1/workspace_mcp-1.17.0.tar.gz"
-    sha256 "63f476061003961eed14570d980b71ac1fdfbc6812fb1278e95324acbc4edcc7"
+    url "https://files.pythonhosted.org/packages/a1/e1/9097a9eebbe11e243cf78235128950b89f1b14e35c13d28d94ede00f4e41/workspace_mcp-1.17.1.tar.gz"
+    sha256 "88f9dc60f7ec04b0c63d1ee0c260a5dd4048532124b110a758fb9dd9239a1df1"
   end
 
   resource "yarl" do
@@ -555,9 +560,13 @@ class SummonClaude < Formula
     venv.pip_install sdists
 
     wheels.each do |r|
-      system libexec/"bin/pip", "install", "--verbose", "--no-deps",
+      clean = buildpath/File.basename(r.url)
+      FileUtils.ln_s r.cached_download, clean
+      system "python3.13", "-m", "pip",
+             "--python=#{libexec}/bin/python",
+             "install", "--verbose", "--no-deps",
              "--ignore-installed", "--no-compile",
-             r.cached_download
+             clean
     end
 
     venv.pip_install_and_link buildpath
