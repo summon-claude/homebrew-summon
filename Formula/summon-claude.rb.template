@@ -12,7 +12,17 @@ class SummonClaude < Formula
   depends_on "python@3.13"
 
   def install
-    virtualenv_install_with_resources
+    venv = virtualenv_create(libexec, "python3.13")
+    venv.pip_install resources.reject { |r| r.name == "playwright" }
+
+    # Playwright ships only platform wheels — install from cached wheel
+    # file directly since Homebrew's resource staging extracts wheels,
+    # which breaks pip install (no setup.py/pyproject.toml in extracted wheel)
+    system libexec/"bin/pip", "install", "--verbose", "--no-deps",
+           "--ignore-installed", "--no-compile",
+           resource("playwright").cached_download
+
+    venv.pip_install_and_link buildpath
   end
 
   test do
